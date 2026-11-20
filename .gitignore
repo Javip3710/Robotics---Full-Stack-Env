@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env.example
+# Local databases
+instance/
+*.db
+*.sqlite
+
+# Frontend build artifacts and dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local

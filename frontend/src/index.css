@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Team 5089 Robo-Nerds theme — navy + gold, matched to the team's outreach site. */
+@theme {
+  --color-brand-50: #eeeef7;
+  --color-brand-100: #dcdcec;
+  --color-brand-200: #b9b9da;
+  --color-brand-300: #8b8bc4;
+  --color-brand-400: #3a3a9d;
+  --color-brand-500: #1c1c7e;
+  --color-brand-600: #01015f;
+  --color-brand-700: #010142;
+  --color-brand-800: #010131;
+
+  --color-gold-50: #fdf9e7;
+  --color-gold-100: #faf0c2;
+  --color-gold-200: #f5e28a;
+  --color-gold-300: #f3cc45;
+  --color-gold-400: #ebb819;
+  --color-gold-500: #e0ac0d;
+  --color-gold-600: #c99a05;
+  --color-gold-700: #a87e04;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-gold-500;
+}
+
+/* Rich-text content (news post bodies rendered from sanitized HTML). */
+.rich-text {
+  @apply leading-relaxed text-slate-800;
+}
+.rich-text > * + * {
+  @apply mt-4;
+}
+.rich-text h2 {
+  @apply mt-6 text-xl font-bold text-slate-900;
+}
+.rich-text h3 {
+  @apply mt-6 text-lg font-semibold text-slate-900;
+}
+.rich-text ul {
+  @apply list-disc pl-6;
+}
+.rich-text ol {
+  @apply list-decimal pl-6;
+}
+.rich-text a {
+  @apply text-brand-600 underline decoration-gold-400 underline-offset-2;
+}
+.rich-text blockquote {
+  @apply border-l-4 border-gold-400 pl-4 italic text-slate-600;
+}
+.rich-text img {
+  @apply rounded-lg max-w-full h-auto;
+}
+.rich-text pre {
+  @apply overflow-x-auto rounded-lg bg-slate-900 p-4 text-sm text-slate-100;
+}
+.rich-text code {
+  @apply rounded bg-slate-100 px-1 py-0.5 text-sm;
+}
+.rich-text pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Toolbar + editable area for the news rich-text editor. */
+.rich-editor:focus {
+  @apply outline-none;
+}
