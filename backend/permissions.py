@@ -29,8 +29,8 @@ RULES = {
     "approve_members": ("mentor", "captain"),
     "assign_roles": ("mentor", "captain"),
     # Deleting members is mentors only.
-    "delete_members": ("mentor",),
-    # Content — leads may publish news (confirmed by the team).
+    "delete_members": ("mentor"),
+    # Content — leads may publish news 
     "publish_news": ("mentor", "captain", "lead"),
     "manage_events": ("mentor", "captain"),
     "manage_documents": ("mentor", "captain", "lead"),
@@ -50,7 +50,6 @@ def can(user, action: str) -> bool:
         return False
     allowed_roles = RULES.get(action)
     if allowed_roles is None:
-        # Unspecified privileged actions are denied rather than invented.
         return False
     return user.role in allowed_roles
 
