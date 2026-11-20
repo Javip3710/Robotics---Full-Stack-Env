@@ -1,27 +1,13 @@
 # FRC Robotics Team Portal — Flask entry point.
-#
-# Usage:
-#   python application.py              # run the API + (if built) frontend on :5000
-#   python application.py seed        # reset DB and load demo fixtures (DEV ONLY)
-#   python application.py create-user # interactive helper to create a real first user
-#
-# Environment variables (see .env.example):
-#   SECRET_KEY            signing key for auth tokens (required in production)
-#   DATABASE_URL          SQLAlchemy URL (defaults to local SQLite)
-#   FLASK_CORS_ORIGINS    comma-separated allowed origins for API CORS
-#   TOKEN_TTL_SECONDS     auth token lifetime
 
 import os
 import sys
 
 from backend import create_app
 
-from livereload import Server
 
 app = create_app()
 
-# Serve the built frontend (frontend/dist) when it exists, with SPA fallback,
-# so a single `python application.py` runs the whole app in development.
 _frontend_dist = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend", "dist")
 
 
@@ -104,10 +90,6 @@ if __name__ == "__main__":
         else:
             print("Unknown command. Use: seed | create-user")
         sys.exit(0)
-
-    app.config["TEMPLATES_AUTO_RELOAD"] = True
-    server = Server(app.wsgi_app)
-    server.watch("pages/")
 
     
     app.run(host="127.0.0.1", port=int(os.environ.get("PORT", 5000)), debug=True)
